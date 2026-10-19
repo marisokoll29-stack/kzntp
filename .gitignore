@@ -1,0 +1,5 @@
+.env
+data/analytics.json
+node_modules/
+npm-debug.log*
+

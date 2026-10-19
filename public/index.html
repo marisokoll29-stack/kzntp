@@ -45,19 +45,20 @@
 
     <section id="catalog" class="section catalog">
       <div class="heading"><div><div class="section-id">02 / SELECT</div><h2 data-text="catalogTitle">КАТЕГОРИИ</h2><p data-text="catalogText">Все категории и цены управляются из админки.</p></div><span>/ADMIN EDITABLE</span></div>
-      <div id="categoryCards" class="category-grid"></div>
+      <div id="categoryCards" class="category-grid"></div><div id="customLinks" class="custom-links"></div>
     </section>
 
     <section id="calculator" class="section calculator">
-      <div class="calc-copy"><div class="section-id">03 / CALCULATOR</div><h2 data-text="calculatorTitle">КАЛЬКУЛЯТОР</h2><p data-text="calculatorText">Выберите категорию и количество.</p><div class="big-code">Z21</div></div>
-      <div class="calc-card">
-        <label><span>КАТЕГОРИЯ</span><select id="categorySelect"></select></label>
-        <label><span>КОЛИЧЕСТВО</span><input id="qtyInput" type="number" min="1" value="1"></label>
-        <div class="line"><span>Цена за единицу</span><b id="unitPrice">0</b></div>
-        <div class="line"><span>Количество</span><b id="qtyView">1</b></div>
-        <div class="total"><span>ИТОГО</span><strong id="totalPrice">0</strong></div>
+      <div class="calc-copy"><div class="section-id">03 / CALCULATOR</div><h2 data-text="calculatorTitle">КАЛЬКУЛЯТОР</h2><p data-text="calculatorText">Выберите задание, укажите залог и рабочий ритм. Калькулятор покажет доступный объём и итог.</p><div class="big-code">LIVE<br>CALC</div></div>
+      <form class="calc-card standard-calc" id="earningsCalculator" novalidate>
+        <div class="calc-terminal-head"><span>KZN://CALC/SESSION</span><b>● ACTIVE</b></div>
+        <label><span>ЗАДАНИЕ</span><select id="taskType"></select><small id="taskMeta">—</small></label>
+        <div class="calc-two"><label><span>СТАРТОВЫЙ ЗАЛОГ</span><input id="deposit" type="number" min="1" step="100" value="3000"><small id="depositMin">—</small></label><label><span>ЗАДАНИЙ В ДЕНЬ</span><input id="tasksPerDay" type="number" min="1" step="1" value="1"><small id="taskLimit">—</small></label></div>
+        <label><span>РАБОЧИХ ДНЕЙ</span><input id="workDays" type="number" min="1" max="31" step="1" value="20"><small>1–31</small></label>
+        <label class="growth-switch"><input id="growthMode" type="checkbox"><span><b>РЕЖИМ РОСТА</b><small>Направлять часть результата обратно в залог</small></span></label>
+        <div class="calc-error" id="calcError"></div><div class="calc-result"><div class="result-main"><span>ЧИСТЫЙ РЕЗУЛЬТАТ</span><strong id="netIncome">0 ₴</strong></div><div class="result-grid"><div><span>ОБОРОТ</span><b id="grossIncome">0 ₴</b></div><div><span>В ЗАЛОГ</span><b id="depositAdded">0 ₴</b></div><div><span>ФИНАЛЬНЫЙ ЗАЛОГ</span><b id="finalDeposit">0 ₴</b></div><div><span>ЗАДАНИЙ</span><b id="totalTasks">0</b></div></div><p id="growthHint"></p></div>
         <a class="btn primary full" data-button="telegram" href="https://t.me/example">TELEGRAM</a>
-      </div>
+      </form>
     </section>
   </main>
   <footer><a class="logo" href="#top"><span>K</span><b data-text="brand">KAZANTIP</b></a><p data-text="footerText">KAZANTIP / SUMMER REPUBLIC / 4eRнOвЦы</p><i>◯ △ □</i></footer>

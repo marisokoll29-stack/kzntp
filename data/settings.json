@@ -1,37 +1,37 @@
 {
   "site": {
     "brand": "KAZANTIP",
-    "eyebrow": "SUMMER REPUBLIC / CHERNIVTSI",
-    "heroTitle": "ЛЕТО. НЕОН. СВОИ ПРАВИЛА.",
-    "heroText": "KAZANTIP — атмосферный проект в эстетике фестиваля, клубной ночи и легальной lifestyle-культуры. Яркий визуал, понятный выбор и быстрый расчёт.",
+    "eyebrow": "SUMMER REPUBLIC / CHERNIVTSI / ZAPORIZHYA",
+    "heroTitle": "СВОЙ ДВИЖ. СВОИ ПРАВИЛА.",
+    "heroText": "KAZANTIP — атмосферный проект c духом фестиваля, клубной ночи и 420 культуры.\nНаши приоритеты - качественный товар и еще более качественный сервис",
     "aboutTitle": "РЕСПУБЛИКА СВОИХ",
-    "aboutText": "Мы собрали фестивальную эстетику, чистую подачу и удобный каталог в одном месте. Без перегруза: выбрал категорию, указал количество, получил итог и перешёл в Telegram.",
-    "catalogTitle": "КАТЕГОРИИ",
-    "catalogText": "Все категории и цены управляются из админки.",
+    "aboutText": "Мы собрали топовый стафф, крутой сайт и бот, удобный каталог и опытную команду в одном месте. Без перегруза: выбрал категорию, указал количество, получил итог и поднял в касание.",
+    "catalogTitle": "КОНТАКТЫ",
+    "catalogText": "Перейди на сайт, в бот или в личку админа",
     "calculatorTitle": "КАЛЬКУЛЯТОР",
-    "calculatorText": "Выберите категорию и количество. Итог пересчитается автоматически.",
+    "calculatorText": "Выберите товар и количество кладов. Итог пересчитается автоматически.",
     "footerText": "KAZANTIP / SUMMER REPUBLIC / 4eRнOвЦы"
   },
   "links": {
-    "telegram": "https://t.me/example"
+    "telegram": "https://t.me/+88805421361"
   },
   "buttons": {
     "heroPrimary": {
       "text": "РАССЧИТАТЬ",
       "url": "#calculator",
       "enabled": true,
-      "newTab": false
+      "newTab": true
     },
     "heroSecondary": {
       "text": "КАТЕГОРИИ",
       "url": "#catalog",
       "enabled": true,
-      "newTab": false
+      "newTab": true
     },
     "telegram": {
       "text": "TELEGRAM",
       "url": "https://t.me/example",
-      "enabled": true,
+      "enabled": false,
       "newTab": true
     }
   },
@@ -39,35 +39,86 @@
     "currency": "₴",
     "markupPercent": 0,
     "minimumAmount": 0,
-    "categories": [
+    "minimumDeposit": 3000,
+    "rules": {
+      "threshold1": 10000,
+      "threshold2": 40000,
+      "rate1": 50,
+      "rate2": 30,
+      "rate3": 10
+    },
+    "tasks": [
       {
-        "id": "cat_sun",
-        "name": "SUN PACK",
-        "price": 700,
+        "id": "task_1",
+        "name": "соль 025",
+        "reward": 120,
+        "cost": 100,
         "enabled": true,
         "order": 1
       },
       {
-        "id": "cat_neon",
-        "name": "NEON PACK",
-        "price": 1100,
+        "id": "task_2",
+        "name": "меф 0,25",
+        "reward": 150,
+        "cost": 120,
         "enabled": true,
         "order": 2
       },
       {
-        "id": "cat_night",
-        "name": "NIGHT PACK",
-        "price": 1700,
+        "id": "task_3",
+        "name": "шиш 5",
+        "reward": 300,
+        "cost": 950,
         "enabled": true,
         "order": 3
+      }
+    ],
+    "categories": [
+      {
+        "id": "oper",
+        "name": "Опер",
+        "price": 700,
+        "reward": 120,
+        "cost": 200,
+        "enabled": true,
+        "order": 1,
+        "url": "https://t.me/+88805421361"
+      },
+      {
+        "id": "bot",
+        "name": "BOT",
+        "price": 1100,
+        "reward": 150,
+        "cost": 150,
+        "enabled": true,
+        "order": 2,
+        "url": "https://t.me/+88805421361"
+      },
+      {
+        "id": "VC",
+        "name": "Визитка",
+        "price": 1700,
+        "reward": 120,
+        "cost": 150,
+        "enabled": true,
+        "order": 3,
+        "url": "https://kazantip.new.tg"
       },
       {
         "id": "cat_republic",
-        "name": "REPUBLIC PACK",
+        "name": "шиш 5",
         "price": 3100,
-        "enabled": true,
+        "reward": 300,
+        "cost": 1250,
+        "enabled": false,
         "order": 4
       }
     ]
+  },
+  "analytics": {
+    "utm_source": "direct",
+    "utm_medium": "website",
+    "utm_campaign": "default",
+    "utm_content": "none"
   }
 }

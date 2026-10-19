@@ -25,6 +25,8 @@ const SESSION_SECRET = process.env.SESSION_SECRET || 'change_this_secret';
 const ROOT = __dirname;
 const PUBLIC = path.join(ROOT, 'public');
 const SETTINGS = path.join(ROOT, 'data', 'settings.json');
+const ANALYTICS = path.join(ROOT, 'data', 'analytics.json');
+function dayKey(){return new Date().toISOString().slice(0,10)}
 
 const MIME = {
   '.html':'text/html; charset=utf-8', '.css':'text/css; charset=utf-8', '.js':'application/javascript; charset=utf-8',
@@ -64,6 +66,11 @@ function collectBody(req, max=512*1024){
   });
 }
 async function readSettings(){return JSON.parse(await fsp.readFile(SETTINGS,'utf8'));}
+async function readAnalytics(){try{return JSON.parse(await fsp.readFile(ANALYTICS,'utf8'));}catch{return {visits:0,unique:0,bySource:{},byCampaign:{},byCountry:{},byRegion:{},buttons:{}};}}
+async function writeAnalytics(a){await fsp.writeFile(ANALYTICS,JSON.stringify(a,null,2)+'\n','utf8');}
+function clean(v,max=120){return String(v||'').replace(/[^a-zA-Z0-9_:.+@?=\/-]/g,'').slice(0,max)||'direct';}
+async function recordVisit(req,body={}){const a=await readAnalytics(),country=clean(req.headers['cf-ipcountry']||req.headers['x-country']||'unknown',32),region=clean(req.headers['cf-region']||req.headers['x-region']||'unknown',64),source=clean(body.utm_source||'direct'),campaign=clean(body.utm_campaign||'none');a.visits++;a.daily=a.daily||{};a.daily[dayKey()]=a.daily[dayKey()]||{visits:0,buttons:{}};a.daily[dayKey()].visits++;a.bySource[source]=(a.bySource[source]||0)+1;a.byCampaign[campaign]=(a.byCampaign[campaign]||0)+1;a.byCountry[country]=(a.byCountry[country]||0)+1;a.byRegion[region]=(a.byRegion[region]||0)+1;await writeAnalytics(a);}
+
 async function writeSettings(data){
   const tmp=SETTINGS+'.'+process.pid+'.'+Date.now()+'.tmp';
   await fsp.writeFile(tmp, JSON.stringify(data,null,2)+'\n','utf8');
@@ -113,6 +120,9 @@ const server=http.createServer(async (req,res)=>{
       const err=validateSettings(body); if(err) return json(res,400,{error:err});
       await writeSettings(body); return json(res,200,{ok:true});
     }
+    if(req.method==='POST'&&p==='/api/analytics/visit'){const body=JSON.parse((await collectBody(req))||'{}');await recordVisit(req,body);return json(res,200,{ok:true});}
+    if(req.method==='POST'&&p==='/api/analytics/click'){const body=JSON.parse((await collectBody(req))||'{}');const a=await readAnalytics(),key=clean(body.button||'unknown');a.buttons[key]=(a.buttons[key]||0)+1;a.daily=a.daily||{};a.daily[dayKey()]=a.daily[dayKey()]||{visits:0,buttons:{}};a.daily[dayKey()].buttons[key]=(a.daily[dayKey()].buttons[key]||0)+1;await writeAnalytics(a);return json(res,200,{ok:true});}
+    if(req.method==='GET'&&p==='/api/admin/analytics'){if(!isAuthed(req))return json(res,401,{error:'unauthorized'});const a=await readAnalytics(),days=Math.min(365,Math.max(1,Number(u.searchParams.get('days')||30))),out={...a,daily:{}};const now=Date.now();Object.entries(a.daily||{}).forEach(([d,v])=>{if(!days||now-new Date(d+'T00:00:00Z').getTime()<(days+1)*86400000)out.daily[d]=v});return json(res,200,out);}
     if(req.method!=='GET'&&req.method!=='HEAD'){res.writeHead(405);return res.end('Method not allowed');}
     if(p==='/admin') {res.writeHead(302,{Location:'/admin/'});return res.end();}
     let file;
