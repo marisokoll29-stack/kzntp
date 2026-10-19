@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <title>KAZANTIP</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="nav">
+    <a class="logo" href="#top"><span>K</span><b data-text="brand">KAZANTIP</b></a>
+    <nav><a href="#about">О ПРОЕКТЕ</a><a href="#catalog">КАТЕГОРИИ</a><a href="#calculator">КАЛЬКУЛЯТОР</a></nav>
+    <a class="nav-telegram" data-button="telegram" href="https://t.me/example">TELEGRAM</a>
+  </header>
+
+  <main id="top">
+    <section class="hero section">
+      <div class="hero-copy">
+        <div class="eyebrow" data-text="eyebrow">SUMMER REPUBLIC / CHERNIVTSI</div>
+        <h1 data-text="heroTitle">ЛЕТО.<br>НЕОН.<br>СВОИ ПРАВИЛА.</h1>
+        <p data-text="heroText">KAZANTIP — атмосферный проект в эстетике фестиваля, клубной ночи и легальной lifestyle-культуры.</p>
+        <div class="actions">
+          <a class="btn primary" data-button="heroPrimary" href="#calculator">РАССЧИТАТЬ</a>
+          <a class="btn ghost" data-button="heroSecondary" href="#catalog">КАТЕГОРИИ</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="disc disc-a"></div><div class="disc disc-b"></div>
+        <div class="poster"><small>REPUBLIC</small><strong>KZN<br>TP</strong><em>4eRнOвЦы / 21</em></div>
+      </div>
+      <div class="marquee"><span>SUMMER • NIGHT • NEON • FREEDOM • MUSIC • REPUBLIC • SUMMER • NIGHT • NEON • FREEDOM • MUSIC • REPUBLIC •</span></div>
+    </section>
+
+    <section id="about" class="section about">
+      <div class="section-id">01 / REPUBLIC</div>
+      <div class="split">
+        <h2 data-text="aboutTitle">РЕСПУБЛИКА СВОИХ</h2>
+        <div><p class="lead" data-text="aboutText">Мы собрали фестивальную эстетику, чистую подачу и удобный каталог в одном месте.</p>
+          <div class="stats"><div><b>24/7</b><span>ENERGY</span></div><div><b>∞</b><span>SUMMER</span></div><div><b>100%</b><span>OWN RULES</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalog" class="section catalog">
+      <div class="heading"><div><div class="section-id">02 / SELECT</div><h2 data-text="catalogTitle">КАТЕГОРИИ</h2><p data-text="catalogText">Все категории и цены управляются из админки.</p></div><span>/ADMIN EDITABLE</span></div>
+      <div id="categoryCards" class="category-grid"></div>
+    </section>
+
+    <section id="calculator" class="section calculator">
+      <div class="calc-copy"><div class="section-id">03 / CALCULATOR</div><h2 data-text="calculatorTitle">КАЛЬКУЛЯТОР</h2><p data-text="calculatorText">Выберите категорию и количество.</p><div class="big-code">Z21</div></div>
+      <div class="calc-card">
+        <label><span>КАТЕГОРИЯ</span><select id="categorySelect"></select></label>
+        <label><span>КОЛИЧЕСТВО</span><input id="qtyInput" type="number" min="1" value="1"></label>
+        <div class="line"><span>Цена за единицу</span><b id="unitPrice">0</b></div>
+        <div class="line"><span>Количество</span><b id="qtyView">1</b></div>
+        <div class="total"><span>ИТОГО</span><strong id="totalPrice">0</strong></div>
+        <a class="btn primary full" data-button="telegram" href="https://t.me/example">TELEGRAM</a>
+      </div>
+    </section>
+  </main>
+  <footer><a class="logo" href="#top"><span>K</span><b data-text="brand">KAZANTIP</b></a><p data-text="footerText">KAZANTIP / SUMMER REPUBLIC / 4eRнOвЦы</p><i>◯ △ □</i></footer>
+  <script src="/script.js"></script>
+</body>
+</html>

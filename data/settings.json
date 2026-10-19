@@ -1,0 +1,73 @@
+{
+  "site": {
+    "brand": "KAZANTIP",
+    "eyebrow": "SUMMER REPUBLIC / CHERNIVTSI",
+    "heroTitle": "ЛЕТО. НЕОН. СВОИ ПРАВИЛА.",
+    "heroText": "KAZANTIP — атмосферный проект в эстетике фестиваля, клубной ночи и легальной lifestyle-культуры. Яркий визуал, понятный выбор и быстрый расчёт.",
+    "aboutTitle": "РЕСПУБЛИКА СВОИХ",
+    "aboutText": "Мы собрали фестивальную эстетику, чистую подачу и удобный каталог в одном месте. Без перегруза: выбрал категорию, указал количество, получил итог и перешёл в Telegram.",
+    "catalogTitle": "КАТЕГОРИИ",
+    "catalogText": "Все категории и цены управляются из админки.",
+    "calculatorTitle": "КАЛЬКУЛЯТОР",
+    "calculatorText": "Выберите категорию и количество. Итог пересчитается автоматически.",
+    "footerText": "KAZANTIP / SUMMER REPUBLIC / 4eRнOвЦы"
+  },
+  "links": {
+    "telegram": "https://t.me/example"
+  },
+  "buttons": {
+    "heroPrimary": {
+      "text": "РАССЧИТАТЬ",
+      "url": "#calculator",
+      "enabled": true,
+      "newTab": false
+    },
+    "heroSecondary": {
+      "text": "КАТЕГОРИИ",
+      "url": "#catalog",
+      "enabled": true,
+      "newTab": false
+    },
+    "telegram": {
+      "text": "TELEGRAM",
+      "url": "https://t.me/example",
+      "enabled": true,
+      "newTab": true
+    }
+  },
+  "calculator": {
+    "currency": "₴",
+    "markupPercent": 0,
+    "minimumAmount": 0,
+    "categories": [
+      {
+        "id": "cat_sun",
+        "name": "SUN PACK",
+        "price": 700,
+        "enabled": true,
+        "order": 1
+      },
+      {
+        "id": "cat_neon",
+        "name": "NEON PACK",
+        "price": 1100,
+        "enabled": true,
+        "order": 2
+      },
+      {
+        "id": "cat_night",
+        "name": "NIGHT PACK",
+        "price": 1700,
+        "enabled": true,
+        "order": 3
+      },
+      {
+        "id": "cat_republic",
+        "name": "REPUBLIC PACK",
+        "price": 3100,
+        "enabled": true,
+        "order": 4
+      }
+    ]
+  }
+}
